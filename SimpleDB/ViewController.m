@@ -7,6 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "KWDBVersion.h"
+#import "KWFeedsInfo.h"
+#import "KWFeedsInfoDBManager.h"
+#import "KWColorLog.h"
 
 @interface ViewController ()
 
@@ -16,14 +20,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.title = @"Main";
+    
+    [self dbTest];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dbTest {
+    
+    [[KWFeedsInfoDBManager sharedInstance] deleteAll];
+    
+    KWFeedsInfo *feedInfo = [KWFeedsInfo example];
+    KSLogInfo(@"begin to insert model");
+    BOOL suc = [[KWFeedsInfoDBManager sharedInstance] insertModel:feedInfo];
+    if(!suc) {
+        KSLogError(@"insert model error");
+    }
+    
+    NSArray *models = [[KWFeedsInfoDBManager sharedInstance] allModel];
+    NSAssert([models count] == 1, @"");
+    KWFeedsInfo *info = [models firstObject];
+    
+    KSLogInfo(@"model from db : %@", info.title);
 }
-
 
 @end

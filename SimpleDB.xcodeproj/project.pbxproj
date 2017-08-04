@@ -13,6 +13,23 @@
 		218745FC1F344FB00087C2E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 218745FA1F344FB00087C2E9 /* Main.storyboard */; };
 		218745FE1F344FB00087C2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 218745FD1F344FB00087C2E9 /* Assets.xcassets */; };
 		218746011F344FB00087C2E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 218745FF1F344FB00087C2E9 /* LaunchScreen.storyboard */; };
+		218746111F3453AE0087C2E9 /* KWDBVersion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 218746101F3453AE0087C2E9 /* KWDBVersion.mm */; };
+		218746291F3453C40087C2E9 /* DataTypeEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 218746141F3453C40087C2E9 /* DataTypeEncoding.m */; };
+		2187462B1F3453C40087C2E9 /* KWSBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 218746181F3453C40087C2E9 /* KWSBaseInfo.m */; };
+		2187462C1F3453C40087C2E9 /* KWSBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2187461A1F3453C40087C2E9 /* KWSBaseModel.m */; };
+		2187462D1F3453C40087C2E9 /* KWSimpleDBManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2187461C1F3453C40087C2E9 /* KWSimpleDBManager.mm */; };
+		2187462E1F3453C40087C2E9 /* KWDBWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 218746211F3453C40087C2E9 /* KWDBWrapper.mm */; };
+		2187462F1F3453C40087C2E9 /* KWFMWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 218746241F3453C40087C2E9 /* KWFMWrapper.mm */; };
+		218746301F3453C40087C2E9 /* KWSqlResult.mm in Sources */ = {isa = PBXBuildFile; fileRef = 218746261F3453C40087C2E9 /* KWSqlResult.mm */; };
+		218746311F3453C40087C2E9 /* KWSqlWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 218746281F3453C40087C2E9 /* KWSqlWrapper.mm */; };
+		218746391F34542A0087C2E9 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 218746361F34542A0087C2E9 /* EXTRuntimeExtensions.m */; };
+		218746411F3455F80087C2E9 /* KWFeedsInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2187463C1F3455F80087C2E9 /* KWFeedsInfo.mm */; };
+		218746421F3455F80087C2E9 /* KWFeedsInfoDBManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2187463E1F3455F80087C2E9 /* KWFeedsInfoDBManager.mm */; };
+		218746431F3455F80087C2E9 /* KWFeedVideoInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 218746401F3455F80087C2E9 /* KWFeedVideoInfo.mm */; };
+		218746471F3456940087C2E9 /* NSDictionary+KWCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 218746461F3456940087C2E9 /* NSDictionary+KWCategories.m */; };
+		2187464A1F3456B80087C2E9 /* NSDate+YLPExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 218746491F3456B80087C2E9 /* NSDate+YLPExtension.m */; };
+		2187464E1F3458810087C2E9 /* KWColorLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2187464D1F3458810087C2E9 /* KWColorLog.m */; };
+		96FAD7F497BB4A83EEABA180 /* libPods-SimpleDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA39B11720E9D07A68A3FB3F /* libPods-SimpleDB.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +43,47 @@
 		218745FD1F344FB00087C2E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		218746001F344FB00087C2E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		218746021F344FB00087C2E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2187460F1F3453AE0087C2E9 /* KWDBVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWDBVersion.h; sourceTree = "<group>"; };
+		218746101F3453AE0087C2E9 /* KWDBVersion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWDBVersion.mm; sourceTree = "<group>"; };
+		218746131F3453C40087C2E9 /* DataTypeEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTypeEncoding.h; sourceTree = "<group>"; };
+		218746141F3453C40087C2E9 /* DataTypeEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTypeEncoding.m; sourceTree = "<group>"; };
+		218746171F3453C40087C2E9 /* KWSBaseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSBaseInfo.h; sourceTree = "<group>"; };
+		218746181F3453C40087C2E9 /* KWSBaseInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSBaseInfo.m; sourceTree = "<group>"; };
+		218746191F3453C40087C2E9 /* KWSBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSBaseModel.h; sourceTree = "<group>"; };
+		2187461A1F3453C40087C2E9 /* KWSBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSBaseModel.m; sourceTree = "<group>"; };
+		2187461B1F3453C40087C2E9 /* KWSimpleDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSimpleDBManager.h; sourceTree = "<group>"; };
+		2187461C1F3453C40087C2E9 /* KWSimpleDBManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWSimpleDBManager.mm; sourceTree = "<group>"; };
+		2187461D1F3453C40087C2E9 /* KWSimpleDBManagerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSimpleDBManagerPrivate.h; sourceTree = "<group>"; };
+		2187461E1F3453C40087C2E9 /* nonstdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nonstdlib.h; sourceTree = "<group>"; };
+		218746201F3453C40087C2E9 /* KWDBWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWDBWrapper.h; sourceTree = "<group>"; };
+		218746211F3453C40087C2E9 /* KWDBWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWDBWrapper.mm; sourceTree = "<group>"; };
+		218746221F3453C40087C2E9 /* KWFMEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWFMEnum.h; sourceTree = "<group>"; };
+		218746231F3453C40087C2E9 /* KWFMWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWFMWrapper.h; sourceTree = "<group>"; };
+		218746241F3453C40087C2E9 /* KWFMWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWFMWrapper.mm; sourceTree = "<group>"; };
+		218746251F3453C40087C2E9 /* KWSqlResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSqlResult.h; sourceTree = "<group>"; };
+		218746261F3453C40087C2E9 /* KWSqlResult.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWSqlResult.mm; sourceTree = "<group>"; };
+		218746271F3453C40087C2E9 /* KWSqlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSqlWrapper.h; sourceTree = "<group>"; };
+		218746281F3453C40087C2E9 /* KWSqlWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWSqlWrapper.mm; sourceTree = "<group>"; };
+		218746341F34542A0087C2E9 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
+		218746351F34542A0087C2E9 /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		218746361F34542A0087C2E9 /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		218746371F34542A0087C2E9 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
+		218746381F34542A0087C2E9 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		2187463B1F3455F80087C2E9 /* KWFeedsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWFeedsInfo.h; sourceTree = "<group>"; };
+		2187463C1F3455F80087C2E9 /* KWFeedsInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWFeedsInfo.mm; sourceTree = "<group>"; };
+		2187463D1F3455F80087C2E9 /* KWFeedsInfoDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWFeedsInfoDBManager.h; sourceTree = "<group>"; };
+		2187463E1F3455F80087C2E9 /* KWFeedsInfoDBManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWFeedsInfoDBManager.mm; sourceTree = "<group>"; };
+		2187463F1F3455F80087C2E9 /* KWFeedVideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWFeedVideoInfo.h; sourceTree = "<group>"; };
+		218746401F3455F80087C2E9 /* KWFeedVideoInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KWFeedVideoInfo.mm; sourceTree = "<group>"; };
+		218746451F3456940087C2E9 /* NSDictionary+KWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KWCategories.h"; sourceTree = "<group>"; };
+		218746461F3456940087C2E9 /* NSDictionary+KWCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KWCategories.m"; sourceTree = "<group>"; };
+		218746481F3456B80087C2E9 /* NSDate+YLPExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+YLPExtension.h"; sourceTree = "<group>"; };
+		218746491F3456B80087C2E9 /* NSDate+YLPExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+YLPExtension.m"; sourceTree = "<group>"; };
+		2187464C1F3458810087C2E9 /* KWColorLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWColorLog.h; sourceTree = "<group>"; };
+		2187464D1F3458810087C2E9 /* KWColorLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWColorLog.m; sourceTree = "<group>"; };
+		22C7D5959F49D25FC4DA41C6 /* Pods-SimpleDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleDB/Pods-SimpleDB.release.xcconfig"; sourceTree = "<group>"; };
+		991966E6E6FAED610D736406 /* Pods-SimpleDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleDB/Pods-SimpleDB.debug.xcconfig"; sourceTree = "<group>"; };
+		BA39B11720E9D07A68A3FB3F /* libPods-SimpleDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +91,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96FAD7F497BB4A83EEABA180 /* libPods-SimpleDB.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01EEB6B7BDACFC4CBF5EEBB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA39B11720E9D07A68A3FB3F /* libPods-SimpleDB.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		218745E51F344FB00087C2E9 = {
 			isa = PBXGroup;
 			children = (
 				218745F01F344FB00087C2E9 /* SimpleDB */,
 				218745EF1F344FB00087C2E9 /* Products */,
+				2D8F80AF09A5975079007F77 /* Pods */,
+				01EEB6B7BDACFC4CBF5EEBB3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +127,12 @@
 		218745F01F344FB00087C2E9 /* SimpleDB */ = {
 			isa = PBXGroup;
 			children = (
+				2187464B1F3458610087C2E9 /* Helper */,
+				2187463A1F3455A00087C2E9 /* Example */,
+				218746121F3453C40087C2E9 /* SimpleDB */,
+				2187461F1F3453C40087C2E9 /* FMWrapper */,
+				2187460E1F3453650087C2E9 /* KWVerson */,
+				218746321F3454110087C2E9 /* Vendor */,
 				218745F41F344FB00087C2E9 /* AppDelegate.h */,
 				218745F51F344FB00087C2E9 /* AppDelegate.m */,
 				218745F71F344FB00087C2E9 /* ViewController.h */,
@@ -79,6 +154,111 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2187460E1F3453650087C2E9 /* KWVerson */ = {
+			isa = PBXGroup;
+			children = (
+				2187460F1F3453AE0087C2E9 /* KWDBVersion.h */,
+				218746101F3453AE0087C2E9 /* KWDBVersion.mm */,
+			);
+			path = KWVerson;
+			sourceTree = "<group>";
+		};
+		218746121F3453C40087C2E9 /* SimpleDB */ = {
+			isa = PBXGroup;
+			children = (
+				218746131F3453C40087C2E9 /* DataTypeEncoding.h */,
+				218746141F3453C40087C2E9 /* DataTypeEncoding.m */,
+				218746171F3453C40087C2E9 /* KWSBaseInfo.h */,
+				218746181F3453C40087C2E9 /* KWSBaseInfo.m */,
+				218746191F3453C40087C2E9 /* KWSBaseModel.h */,
+				2187461A1F3453C40087C2E9 /* KWSBaseModel.m */,
+				2187461B1F3453C40087C2E9 /* KWSimpleDBManager.h */,
+				2187461C1F3453C40087C2E9 /* KWSimpleDBManager.mm */,
+				2187461D1F3453C40087C2E9 /* KWSimpleDBManagerPrivate.h */,
+				2187461E1F3453C40087C2E9 /* nonstdlib.h */,
+			);
+			path = SimpleDB;
+			sourceTree = "<group>";
+		};
+		2187461F1F3453C40087C2E9 /* FMWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				218746201F3453C40087C2E9 /* KWDBWrapper.h */,
+				218746211F3453C40087C2E9 /* KWDBWrapper.mm */,
+				218746221F3453C40087C2E9 /* KWFMEnum.h */,
+				218746231F3453C40087C2E9 /* KWFMWrapper.h */,
+				218746241F3453C40087C2E9 /* KWFMWrapper.mm */,
+				218746251F3453C40087C2E9 /* KWSqlResult.h */,
+				218746261F3453C40087C2E9 /* KWSqlResult.mm */,
+				218746271F3453C40087C2E9 /* KWSqlWrapper.h */,
+				218746281F3453C40087C2E9 /* KWSqlWrapper.mm */,
+			);
+			path = FMWrapper;
+			sourceTree = "<group>";
+		};
+		218746321F3454110087C2E9 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				218746441F3456280087C2E9 /* Category */,
+				218746331F34542A0087C2E9 /* extobjc */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		218746331F34542A0087C2E9 /* extobjc */ = {
+			isa = PBXGroup;
+			children = (
+				218746341F34542A0087C2E9 /* EXTKeyPathCoding.h */,
+				218746351F34542A0087C2E9 /* EXTRuntimeExtensions.h */,
+				218746361F34542A0087C2E9 /* EXTRuntimeExtensions.m */,
+				218746371F34542A0087C2E9 /* EXTScope.h */,
+				218746381F34542A0087C2E9 /* metamacros.h */,
+			);
+			path = extobjc;
+			sourceTree = "<group>";
+		};
+		2187463A1F3455A00087C2E9 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				2187463B1F3455F80087C2E9 /* KWFeedsInfo.h */,
+				2187463C1F3455F80087C2E9 /* KWFeedsInfo.mm */,
+				2187463D1F3455F80087C2E9 /* KWFeedsInfoDBManager.h */,
+				2187463E1F3455F80087C2E9 /* KWFeedsInfoDBManager.mm */,
+				2187463F1F3455F80087C2E9 /* KWFeedVideoInfo.h */,
+				218746401F3455F80087C2E9 /* KWFeedVideoInfo.mm */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		218746441F3456280087C2E9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				218746451F3456940087C2E9 /* NSDictionary+KWCategories.h */,
+				218746461F3456940087C2E9 /* NSDictionary+KWCategories.m */,
+				218746481F3456B80087C2E9 /* NSDate+YLPExtension.h */,
+				218746491F3456B80087C2E9 /* NSDate+YLPExtension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		2187464B1F3458610087C2E9 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2187464C1F3458810087C2E9 /* KWColorLog.h */,
+				2187464D1F3458810087C2E9 /* KWColorLog.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		2D8F80AF09A5975079007F77 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				991966E6E6FAED610D736406 /* Pods-SimpleDB.debug.xcconfig */,
+				22C7D5959F49D25FC4DA41C6 /* Pods-SimpleDB.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +266,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 218746051F344FB00087C2E9 /* Build configuration list for PBXNativeTarget "SimpleDB" */;
 			buildPhases = (
+				11D962ACD5E944AB7BC87EF9 /* [CP] Check Pods Manifest.lock */,
 				218745EA1F344FB00087C2E9 /* Sources */,
 				218745EB1F344FB00087C2E9 /* Frameworks */,
 				218745EC1F344FB00087C2E9 /* Resources */,
+				46026F19D930AE17D956DB8F /* [CP] Embed Pods Frameworks */,
+				D6A1ADFD32BF26B2599FCC5F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,14 +329,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11D962ACD5E944AB7BC87EF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		46026F19D930AE17D956DB8F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleDB/Pods-SimpleDB-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6A1ADFD32BF26B2599FCC5F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleDB/Pods-SimpleDB-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		218745EA1F344FB00087C2E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218746111F3453AE0087C2E9 /* KWDBVersion.mm in Sources */,
+				218746291F3453C40087C2E9 /* DataTypeEncoding.m in Sources */,
+				2187462C1F3453C40087C2E9 /* KWSBaseModel.m in Sources */,
+				218746431F3455F80087C2E9 /* KWFeedVideoInfo.mm in Sources */,
 				218745F91F344FB00087C2E9 /* ViewController.m in Sources */,
 				218745F61F344FB00087C2E9 /* AppDelegate.m in Sources */,
+				2187464E1F3458810087C2E9 /* KWColorLog.m in Sources */,
+				2187462D1F3453C40087C2E9 /* KWSimpleDBManager.mm in Sources */,
+				218746311F3453C40087C2E9 /* KWSqlWrapper.mm in Sources */,
+				2187464A1F3456B80087C2E9 /* NSDate+YLPExtension.m in Sources */,
+				218746301F3453C40087C2E9 /* KWSqlResult.mm in Sources */,
+				2187462B1F3453C40087C2E9 /* KWSBaseInfo.m in Sources */,
+				218746391F34542A0087C2E9 /* EXTRuntimeExtensions.m in Sources */,
 				218745F31F344FB00087C2E9 /* main.m in Sources */,
+				218746471F3456940087C2E9 /* NSDictionary+KWCategories.m in Sources */,
+				2187462F1F3453C40087C2E9 /* KWFMWrapper.mm in Sources */,
+				218746421F3455F80087C2E9 /* KWFeedsInfoDBManager.mm in Sources */,
+				2187462E1F3453C40087C2E9 /* KWDBWrapper.mm in Sources */,
+				218746411F3455F80087C2E9 /* KWFeedsInfo.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +518,7 @@
 		};
 		218746061F344FB00087C2E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 991966E6E6FAED610D736406 /* Pods-SimpleDB.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V7SGL5CCQ8;
@@ -283,6 +531,7 @@
 		};
 		218746071F344FB00087C2E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22C7D5959F49D25FC4DA41C6 /* Pods-SimpleDB.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V7SGL5CCQ8;
@@ -312,6 +561,7 @@
 				218746071F344FB00087C2E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
