@@ -244,7 +244,7 @@
 
 - (void)compositeDelte {
     self.sql = [NSString stringWithFormat:@"DELETE FROM %@", self.table];
-    self.sql = [self.sql stringByAppendingString:[self conditionStr:[self.conditions allKeys]]]; 
+    self.sql = [self.sql stringByAppendingString:[[self class] conditionStr:[self.conditions allKeys]]]; 
     [self.params addEntriesFromDictionary:self.conditions];
 }
 
@@ -310,7 +310,7 @@
 
 - (void)appendWhere {
     if(self.conditions && [[self.conditions allKeys] count]>0) {
-        self.sql = [self.sql stringByAppendingString:[self conditionStr:[self.conditions allKeys]]];
+        self.sql = [self.sql stringByAppendingString:[[self class] conditionStr:[self.conditions allKeys]]];
         [self.params addEntriesFromDictionary:self.conditions];
     }
 }
@@ -363,12 +363,12 @@
     }
     
     [updateStr deleteCharactersInRange:NSMakeRange(updateStr.length - 2, 2)];
-    [updateStr appendString: [self conditionStr: conditions]];
+    [updateStr appendString: [[self class] conditionStr: conditions]];
     //    NSLog(@"==INFO== update db string: %@", updateStr);
     return [updateStr copy];
 }
 
-- (NSString *)conditionStr:(NSArray *)conditions {
++ (NSString *)conditionStr:(NSArray *)conditions {
     if ([conditions count] < 1) {
 //        NSAssert(NO, @"Model 唯一条件不完备");
         return @" ";

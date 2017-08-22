@@ -62,26 +62,27 @@
 
 }
 
-- (void)checkUpgrade:(NSString *)identifier curVer:(NSInteger)ver blk:(void(^)(NSInteger oldVer))upgradeBlk {
+- (void)checkUpgrade:(NSString *)identifier curVer:(NSInteger)ver blk:(BOOL(^)(NSInteger oldVer))upgradeBlk {
     NSAssert(identifier.length > 0, @"");
     NSAssert(ver > 0, @"");
-    KWSqlResult *result = self.dbWrapper.table(_versionTable).selectInt(@"value").commit();
+    KWSqlResult *result = self.dbWrapper.table(_versionTable).selectInt(@"value").where(@{@"identifier":identifier}).commit();
     if(!result.success) {
         return;
     }
     
     if (result.num < 1) {
-        result = self.dbWrapper.table(_versionTable).insert(@{@"value" : @(ver)}).commit();
+        result = self.dbWrapper.table(_versionTable).insert(@{@"value" : @(ver), @"identifier":identifier}).commit();
         if(!result.success) {
             NSAssert(NO, @"");
         }
     } 
     else if (result.num < ver) {
         if(upgradeBlk) {
-            upgradeBlk(result.num); 
-            self.dbWrapper.table(_versionTable).update(@{@"value" : @(ver)}).where(@{@"identifier":identifier}).commit();
-            if(!result.success) {
-                NSAssert(NO, @"");
+            if(upgradeBlk(result.num)) { 
+                self.dbWrapper.table(_versionTable).update(@{@"value" : @(ver)}).where(@{@"identifier":identifier}).commit();
+                if(!result.success) {
+                    NSAssert(NO, @"");
+                }
             }
         }
     }	

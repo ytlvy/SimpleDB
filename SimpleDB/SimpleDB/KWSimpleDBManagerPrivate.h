@@ -8,7 +8,10 @@
 
 #ifndef KWSimpleDBManagerPrivate_h
 #define KWSimpleDBManagerPrivate_h
+#import "KWFMWrapper.h"
+
 @class FMResultSet;
+
 
 @protocol KWBaseModelProtocal <NSObject>
 
@@ -37,6 +40,8 @@
 @property (nonatomic, strong) id   propertyClazz;
 @property (nonatomic, strong) NSString *tableIdentifier;
 @property (nonatomic, assign) NSInteger currentVersion;
+@property (nonatomic, strong) KWFMWrapper *dbWrapper;
+
 
 
 - (NSString *)insertSqlWithDic:(NSDictionary *)dic;
@@ -48,7 +53,10 @@
 - (id)createInstanceByClassName:(NSString *)className;
 
 - (void)upgradeCheck;
-- (void)upgrade:(NSInteger)oldVersion;
+- (BOOL)upgrade:(NSInteger)oldVersion;
+- (BOOL)upgradeFrom1To2;
+- (BOOL)upgradeFrom2To3;
+- (BOOL)upgradeFrom3To4;
 
 - (void)commonInit;
 - (BOOL)createTables;

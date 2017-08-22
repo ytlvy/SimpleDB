@@ -84,5 +84,6 @@ typedef NS_ENUM(NSInteger, KWSqlType){
 
 - (NSString *)composite;
 - (void)reset;
++ (NSString *)conditionStr:(NSArray *)conditions;
 
 @end

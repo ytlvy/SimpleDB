@@ -12,6 +12,6 @@
 
 + (id)sharedInstance;
 - (void)checkUpgrade:(NSString *)identifier curVer:(NSInteger)ver addColums:(NSArray *)colums;
-- (void)checkUpgrade:(NSString *)identifier curVer:(NSInteger)ver blk:(void(^)(NSInteger oldVer))upgradeBlk;
+- (void)checkUpgrade:(NSString *)identifier curVer:(NSInteger)ver blk:(BOOL(^)(NSInteger oldVer))upgradeBlk;
 
 @end

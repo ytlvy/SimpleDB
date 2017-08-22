@@ -17,6 +17,7 @@
 #import <UIKit/UIKit.h>
 #import "KWFMWrapper.h"
 #import "KWDBVersion.h"
+#import "KWSqlWrapper.h"
 
 
 static NSString * const TYPE_INT_NAME     = @"int";
@@ -27,7 +28,6 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
 
 @interface KWSimpleDBManager() 
 
-@property (nonatomic, strong) KWFMWrapper *dbWrapper;
 @property (nonatomic, strong) NSString *path;
 
 @end
@@ -60,14 +60,52 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
     
     NSAssert(self.tableIdentifier.length > 0, @"");
     NSAssert(self.currentVersion > 0, @"");
-    [[KWDBVersion sharedInstance] checkUpgrade:self.tableIdentifier curVer:self.currentVersion blk:^(NSInteger oldVer){
-        [self upgrade:oldVer]; 
+    [[KWDBVersion sharedInstance] checkUpgrade:self.tableIdentifier curVer:self.currentVersion blk:^BOOL(NSInteger oldVer){
+        return [self upgrade:oldVer]; 
     }];
 }
 
+- (BOOL)upgrade:(NSInteger)oldVersion {
+    BOOL succ = YES;
+    
+    while (oldVersion < self.currentVersion) {
+        
+        switch (oldVersion) {
+            case 0:
+                break;
+            case 1:
+                succ = [self upgradeFrom1To2];
+                break;
+            case 2:
+                succ = [self upgradeFrom2To3];
+                break;
+            case 3:
+                succ = [self upgradeFrom3To4];
+                break;
+            default:
+                break;
+        }
+        if(!succ) {
+            break;
+        }
+        oldVersion ++;
+    }    
+        
+    return succ;
+}
 
-- (void)upgrade:(NSInteger)oldVersion {
-    NSAssert(NO, @"虚拟方法");
+- (BOOL)upgradeFrom1To2 {
+    NSAssert(NO, @"");
+    return NO;
+}
+- (BOOL)upgradeFrom2To3 {
+    NSAssert(NO, @"");
+    return NO;
+    
+}
+- (BOOL)upgradeFrom3To4 {
+    NSAssert(NO, @"");
+    return NO;
 }
 
 - (void)commonInit {
@@ -135,6 +173,18 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
 }
 
 
+- (BOOL)keepModelTotalNum:(NSInteger)total{
+    NSString *sql = [NSString stringWithFormat: @"DELETE FROM %@ WHERE rowid < (SELECT rowid FROM %@ ORDER BY rowid DESC LIMIT 1 OFFSET %ld)", self.tableName, self.tableName, total-1];
+    
+    KWSqlResult *res = self.dbWrapper.commitSql(sql);
+    if(!res.success) {
+        NSAssert(NO, @"");
+        NSLog(@"insert models error");
+    }
+    return res.success;  
+}
+
+
 - (BOOL)updateModel:(KWSBaseModel *)model {
     
     KWSqlResult *res = self.dbWrapper.table(self.tableName).update([model fmColumnMap]).where([self conditionMap:model]).commit();
@@ -143,6 +193,32 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
         NSLog(@"updateModel error");
     }
     return res.success;  
+}
+
+
+- (BOOL)updateModelCondition:(NSDictionary *)condition params:(NSDictionary *)params {
+    NSAssert(condition.count > 0 && params.count > 0, @"");
+    
+    NSArray *colums = [self.propertyClazz fmPropertyArray];
+    if(colums.count < 1) {
+        colums = [[self.propertyClazz fmPropertyMap] allKeys];
+    }
+    NSAssert(colums.count > 0, @"");
+    
+    [[condition allKeys] enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([colums indexOfObject:obj] == NSNotFound) {
+            NSAssert(NO, @"");
+        }
+    }];
+                     
+    [[params allKeys] enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([colums indexOfObject:obj] == NSNotFound) {
+            NSAssert(NO, @"");
+        }
+    }];
+    
+    KWSqlResult *res =  self.dbWrapper.table(self.tableName).where(condition).update(params).commit();
+    return res.success;
 }
 
 - (KWSBaseModel *)modelForDic:(NSDictionary *)dic {
@@ -183,32 +259,7 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
 }
 
 - (NSArray *)modelsInRange:(NSRange)range {
-    NSAssert(range.length > 0, @"");
-    
-    KWSqlResult *res = nil;
-    if([self.propertyClazz fmSortString].length > 0) {
-        res = self.dbWrapper.table(self.tableName).selectArray(nil).sortStr([self.propertyClazz fmSortString]).limit(range.length,  range.location).commit();
-    }
-    else {
-        res = self.dbWrapper.table(self.tableName).selectArray(nil).limit(range.length,  range.location).commit();
-    }
-    
-    if([res.rows count] >0) {
-        NSMutableArray *list = [[NSMutableArray alloc] init]; 
-        [res.rows enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if([obj isKindOfClass:[NSDictionary class]]) {
-                KWSBaseModel *model = [self parseFMResult:obj clazz:self.propertyClazz];
-                if(model) {
-                    [list addObject:model];
-                }
-            }
-            
-        }];
-        
-        return list;
-    }
-    
-    return nil;
+    return [self modelsInRange:range condition:nil];
 }
 
 - (NSInteger)totalNumber {
@@ -226,9 +277,106 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
     return res.success;
 }
 
+- (BOOL)removeModel:(KWSBaseModel *)model {
+    return [self deleteModel:model];
+}
+
 - (BOOL)deleteAll {
     KWSqlResult *res = self.dbWrapper.table(self.tableName).remove().commit();
     return res.success; 
+}
+- (BOOL)removeAll {
+    return [self deleteAll]; 
+}
+
+#pragma mark - condition
+
+
+- (BOOL)removeModelsCondition:(NSDictionary *)condition {
+    if (![condition isKindOfClass:[NSDictionary class]] || condition.count <1) {
+        NSAssert(NO, @"");
+        return NO;
+    }
+    
+    KWSqlResult *res = self.dbWrapper.table(self.tableName).remove().where(condition).commit();
+    return res.success;
+}
+
+- (NSArray *)modelsInRange:(NSRange)range condition:(NSDictionary *)condition {
+    NSAssert(range.length > 0, @"");
+    
+    KWFMWrapper *wrapper = self.dbWrapper.table(self.tableName).selectArray(nil);
+    if([self.propertyClazz fmSortString].length > 0) {
+        wrapper = wrapper.sortStr([self.propertyClazz fmSortString]);
+    }
+    
+    if(condition && [condition isKindOfClass:[NSDictionary class]]) {
+        wrapper = wrapper.where(condition);
+    }
+    
+    KWSqlResult *res = wrapper.limit(range.length,  range.location).commit();
+    
+    if([res.rows count] >0) {
+        NSMutableArray *list = [[NSMutableArray alloc] init]; 
+        [res.rows enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([obj isKindOfClass:[NSDictionary class]]) {
+                KWSBaseModel *model = [self parseFMResult:obj clazz:self.propertyClazz];
+                if(model) {
+                    [list addObject:model];
+                }
+            }
+            
+        }];
+        
+        return list;
+    }
+    
+    return nil;
+    
+}
+
+
+- (NSInteger)totalNumberCondition:(NSDictionary *)condition {
+    if (![condition isKindOfClass:[NSDictionary class]] || condition.count <1) {
+        NSAssert(NO, @"");
+        return 0;
+    }
+    KWSqlResult *res = self.dbWrapper.table(self.tableName).total().where(condition).commit();
+    return res.num;
+}
+- (BOOL)keepModelTotalNum:(NSInteger)total condition:(NSDictionary *)condition {
+    if (![condition isKindOfClass:[NSDictionary class]] || condition.count <1) {
+        NSAssert(NO, @"");
+        return 0;
+    }
+
+    NSString *condStr = [self conditionStr:[condition allKeys] needWhere:NO];
+    NSString *sql = [NSString stringWithFormat: @"DELETE FROM %@ WHERE rowid < (SELECT rowid FROM %@ WHERE %@ ORDER BY rowid DESC LIMIT 1 OFFSET %ld) AND %@", self.tableName, self.tableName, condStr, total-1, condStr];
+    
+    KWSqlResult *res = self.dbWrapper.commitSqlAndParams(sql, condition);
+    if(!res.success) {
+        NSAssert(NO, @"");
+        NSLog(@"insert models error");
+    }
+    return res.success;  
+}
+
+- (NSString *)conditionStr:(NSArray *)conditions needWhere:(BOOL)needWhere {
+    if ([conditions count] < 1) {
+        //        NSAssert(NO, @"Model 唯一条件不完备");
+        return @" ";
+    }
+    NSMutableString *con = needWhere ? [@" WHERE " mutableCopy] : [NSMutableString new];
+    [con appendString: [NSString stringWithFormat:@" %@=:%@ ", conditions[0], conditions[0]]];
+    
+    int length = (int)[conditions count];
+    if (length > 1) {
+        for (int i = 1; i<length; i++) {
+            [con appendFormat:@"AND %@=:%@ ", conditions[i], conditions[i]];
+        }
+    }
+    
+    return [con copy];
 }
 
 #pragma mark - Private Interface
@@ -284,28 +432,10 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
     }
     
     [updateStr deleteCharactersInRange:NSMakeRange(updateStr.length - 2, 2)];
-    [updateStr appendString: [self conditionStr: conditions]];
+    [updateStr appendString: [self conditionStr: conditions needWhere:YES]];
     //    NSLog(@"==INFO== update db string: %@", updateStr);
     return [updateStr copy];
 }
-
-- (NSString *)conditionStr:(NSArray *)conditions {
-    if ([conditions count] < 1) {
-        NSAssert(NO, @"Model 唯一条件不完备");
-        return @" ";
-    }
-    NSMutableString *con = [[NSString stringWithFormat:@" WHERE %@=:%@ ", conditions[0], conditions[0]] mutableCopy];
-    
-    int length = (int)[conditions count];
-    if (length > 1) {
-        for (int i = 1; i<length; i++) {
-            [con appendFormat:@"AND %@=:%@ ", conditions[i], conditions[i]];
-        }
-    }
-    
-    return [con copy];
-}
-
 
 - (NSString *)updateSqlWithDic:(NSDictionary *)dic condition:(NSArray *)conditons{
     
@@ -397,10 +527,6 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
                 }
             }
             
-            if([value isKindOfClass:[NSNull class]]) {
-                value = nil;
-            }
-            
             [instanceObj setValue:value forKey:key];
         }
     }
@@ -464,6 +590,7 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
     return nil;
 }
 
+
 - (void)virtual_configManager {
     
 }
@@ -476,3 +603,4 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
 }
 
 @end
+

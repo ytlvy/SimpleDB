@@ -21,14 +21,20 @@
 
 - (KWFMWrapper *(^)())total;
 - (KWFMWrapper *(^)(NSString *colum))columTotal;
+
 - (KWFMWrapper *(^)(NSString *colum))selectInt;
 - (KWFMWrapper *(^)(NSString *colum))selectOne;
 - (KWFMWrapper *(^)(NSArray *colums))selectRow;
 - (KWFMWrapper *(^)(NSArray *colums))selectArray;
+
 - (KWFMWrapper *(^)(NSDictionary *params))insert;
 - (KWFMWrapper *(^)(NSArray *rows, BOOL reverse))insertArray;
+
 - (KWFMWrapper *(^)(NSDictionary *params))update;
+
+
 - (KWFMWrapper *(^)(NSArray *colums))addColum;
+
 
 - (KWFMWrapper *(^)(NSInteger limit, NSInteger offset))limit;
 
@@ -43,4 +49,7 @@
 
 - (KWSqlResult *(^)())commit;
 
+- (KWSqlResult *(^)(NSString *sql))commitSql;
+
+- (KWSqlResult *(^)(NSString *sql, NSDictionary *params))commitSqlAndParams;
 @end

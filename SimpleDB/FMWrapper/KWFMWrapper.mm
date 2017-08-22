@@ -220,6 +220,20 @@
     }; 
 }
 
+- (KWSqlResult *(^)(NSString *sql))commitSql {
+     return ^id(NSString *sql) {
+         KWSqlResult *result = [self.dbWrapper execute:sql params:nil];
+         return result;
+     };
+}
+
+- (KWSqlResult *(^)(NSString *sql, NSDictionary *params))commitSqlAndParams{
+    return ^id(NSString *sql, NSDictionary *params) {
+        KWSqlResult *result = [self.dbWrapper execute:sql params:params];
+        return result;
+    };
+}
+
 - (KWSqlResult *(^)())commit {
     return ^id() {
         
