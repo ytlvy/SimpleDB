@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21230EE21F54209500CE3B84 /* KWDBVersion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 218746101F3453AE0087C2E9 /* KWDBVersion.mm */; };
 		218745F31F344FB00087C2E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 218745F21F344FB00087C2E9 /* main.m */; };
 		218745F61F344FB00087C2E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 218745F51F344FB00087C2E9 /* AppDelegate.m */; };
 		218745F91F344FB00087C2E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218745F81F344FB00087C2E9 /* ViewController.m */; };
 		218745FC1F344FB00087C2E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 218745FA1F344FB00087C2E9 /* Main.storyboard */; };
 		218745FE1F344FB00087C2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 218745FD1F344FB00087C2E9 /* Assets.xcassets */; };
 		218746011F344FB00087C2E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 218745FF1F344FB00087C2E9 /* LaunchScreen.storyboard */; };
-		218746111F3453AE0087C2E9 /* KWDBVersion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 218746101F3453AE0087C2E9 /* KWDBVersion.mm */; };
 		218746291F3453C40087C2E9 /* DataTypeEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 218746141F3453C40087C2E9 /* DataTypeEncoding.m */; };
 		2187462B1F3453C40087C2E9 /* KWSBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 218746181F3453C40087C2E9 /* KWSBaseInfo.m */; };
 		2187462C1F3453C40087C2E9 /* KWSBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2187461A1F3453C40087C2E9 /* KWSBaseModel.m */; };
@@ -130,8 +130,6 @@
 				2187464B1F3458610087C2E9 /* Helper */,
 				2187463A1F3455A00087C2E9 /* Example */,
 				218746121F3453C40087C2E9 /* SimpleDB */,
-				2187461F1F3453C40087C2E9 /* FMWrapper */,
-				2187460E1F3453650087C2E9 /* KWVerson */,
 				218746321F3454110087C2E9 /* Vendor */,
 				218745F41F344FB00087C2E9 /* AppDelegate.h */,
 				218745F51F344FB00087C2E9 /* AppDelegate.m */,
@@ -166,6 +164,8 @@
 		218746121F3453C40087C2E9 /* SimpleDB */ = {
 			isa = PBXGroup;
 			children = (
+				2187461F1F3453C40087C2E9 /* FMWrapper */,
+				2187460E1F3453650087C2E9 /* KWVerson */,
 				218746131F3453C40087C2E9 /* DataTypeEncoding.h */,
 				218746141F3453C40087C2E9 /* DataTypeEncoding.m */,
 				218746171F3453C40087C2E9 /* KWSBaseInfo.h */,
@@ -382,8 +382,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				218746111F3453AE0087C2E9 /* KWDBVersion.mm in Sources */,
 				218746291F3453C40087C2E9 /* DataTypeEncoding.m in Sources */,
+				21230EE21F54209500CE3B84 /* KWDBVersion.mm in Sources */,
 				2187462C1F3453C40087C2E9 /* KWSBaseModel.m in Sources */,
 				218746431F3455F80087C2E9 /* KWFeedVideoInfo.mm in Sources */,
 				218745F91F344FB00087C2E9 /* ViewController.m in Sources */,
