@@ -27,9 +27,12 @@
 
  @param condition 条件字典 @{@"col1":@"val1", @"col2":@"val2"}
  @param params 需要更新的数据字典 @{@"needupdateCol1":@"val1", @"needupdateCol2":@"val2"}
- @return BOOL
+ @return 
  */
 - (BOOL)updateModelCondition:(NSDictionary *)condition params:(NSDictionary *)params;
+
+
+- (BOOL)updateModel:(NSDictionary *)values column:(NSString *)colum values:(NSArray *)values;
 
 - (BOOL)deleteModel:(KWSBaseModel *)model;
 - (BOOL)removeModel:(KWSBaseModel *)model;

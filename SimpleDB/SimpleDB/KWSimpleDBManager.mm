@@ -194,7 +194,30 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
     }
     return res.success;  
 }
+- (BOOL)updateModel:(NSDictionary *)params column:(NSString *)colum values:(NSArray *)values {
+    NSAssert(params.count > 0 && values.count > 0 && colum.length > 0, @"");
+    
+    NSArray *colums = [self.propertyClazz fmPropertyArray];
+    if(colums.count < 1) {
+        colums = [[self.propertyClazz fmPropertyMap] allKeys];
+    }
+    NSAssert(colums.count > 0, @"");
+    //监测条件字段
+    if([colums indexOfObject:colum] == NSNotFound) {
+        NSAssert(NO, @"");
+    }
+    
+    //监测更新数据字段
+    [[params allKeys] enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([colums indexOfObject:obj] == NSNotFound) {
+            NSAssert(NO, @"");
+        }
+    }];
+    
+    KWSqlResult *res =  self.dbWrapper.table(self.tableName).whereIn(colum, values).update(params).commit();
+    return res.success;
 
+}
 
 - (BOOL)updateModelCondition:(NSDictionary *)condition params:(NSDictionary *)params {
     NSAssert(condition.count > 0 && params.count > 0, @"");

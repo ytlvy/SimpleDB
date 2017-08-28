@@ -43,6 +43,7 @@
 
 - (KWFMWrapper *(^)(NSArray *pkeys))primary;
 - (KWFMWrapper *(^)(NSDictionary *conditions))where;
+- (KWFMWrapper *(^)(NSString *column, NSArray *conditions))whereIn;
 - (KWFMWrapper *(^)(NSString *colum, BOOL ASC))sort;
 - (KWFMWrapper *(^)(NSString *sortStr))sortStr;
 

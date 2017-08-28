@@ -49,6 +49,8 @@ typedef NS_ENUM(NSInteger, KWSqlType){
  */
 @property (nonatomic, strong) NSDictionary *conditions;
 
+@property (nonatomic, strong) NSDictionary *whereIn;
+
 /**
  排序
  */

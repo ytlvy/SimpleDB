@@ -205,11 +205,31 @@
 
 - (void)compositeUpdate {
     NSAssert([self.columAndvalues count] > 0, @""); 
-    NSAssert(self.conditions, @"");
+    NSAssert(self.conditions || self.whereIn, @"");
     
-    self.sql = [self updateSqlWithDic:self.columAndvalues condition:[[self conditions] allKeys]]; 
-    [self.params addEntriesFromDictionary:self.columAndvalues];
-    [self.params addEntriesFromDictionary:self.conditions];
+    if(self.conditions.count > 0) {
+        self.sql = [self updateSqlWithDic:self.columAndvalues condition:[[self conditions] allKeys]]; 
+        [self.params addEntriesFromDictionary:self.columAndvalues];
+        [self.params addEntriesFromDictionary:self.conditions];
+    }
+    else {
+        self.sql = [self updateSqlWithDic:self.columAndvalues whereIn:self.whereIn]; 
+        [self.params addEntriesFromDictionary:self.columAndvalues];
+    }
+}
+
+- (NSString *)updateSqlWithDic:(NSDictionary *)dic whereIn:(NSDictionary *)conditions{
+    NSMutableString *updateStr = [[NSMutableString alloc] initWithFormat:@"UPDATE %@ SET ", self.table];
+    
+    NSArray *allKeys = [dic allKeys];
+    for (NSString *key in allKeys) {
+        [updateStr appendFormat:@"%@=:%@, ", key, key];
+    }
+    [updateStr deleteCharactersInRange:NSMakeRange(updateStr.length - 2, 2)];
+    
+    [updateStr appendString: [self whereInStr:conditions]];
+    NSLog(@"==INFO== update db string: %@", updateStr);
+    return [updateStr copy];
 }
 
 - (void)compositeCreate {
@@ -313,6 +333,36 @@
         self.sql = [self.sql stringByAppendingString:[[self class] conditionStr:[self.conditions allKeys]]];
         [self.params addEntriesFromDictionary:self.conditions];
     }
+    else if(self.whereIn && self.whereIn.count > 0) {
+        self.sql = [self.sql stringByAppendingString:[self whereInStr:self.whereIn]];
+        [self.params addEntriesFromDictionary:self.conditions];
+    }
+}
+
+- (NSString *)whereInStr:(NSDictionary *)whereIn {
+    NSString *colum = [[whereIn allKeys] firstObject];
+    if(![colum isKindOfClass:[NSString class]]) {
+        return @"";
+    }
+    NSArray *values = whereIn[colum];
+    if(!values || ![values isKindOfClass:[NSArray class]]) {
+        return @"";
+    }
+    
+    NSMutableString *sql = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@" WHERE %@ IN (", colum]];
+    NSInteger count = [values count];
+    [values enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(idx == count-1) {
+            [sql appendString:[NSString stringWithFormat:@"%@ ", obj]];
+        }
+        else {
+            [sql appendString:[NSString stringWithFormat:@"%@, ", obj]];        
+        }
+    }];
+    
+    [sql appendString:@") "];
+    
+    return [sql copy];
 }
 
 - (void)appendSort {
