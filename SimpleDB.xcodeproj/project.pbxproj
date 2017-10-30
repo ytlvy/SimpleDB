@@ -106,6 +106,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		21371C791FA71DDC000023FF /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				218746131F3453C40087C2E9 /* DataTypeEncoding.h */,
+				218746141F3453C40087C2E9 /* DataTypeEncoding.m */,
+				2187461E1F3453C40087C2E9 /* nonstdlib.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		21371C7C1FA71EBB000023FF /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				218746171F3453C40087C2E9 /* KWSBaseInfo.h */,
+				218746181F3453C40087C2E9 /* KWSBaseInfo.m */,
+				218746191F3453C40087C2E9 /* KWSBaseModel.h */,
+				2187461A1F3453C40087C2E9 /* KWSBaseModel.m */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		218745E51F344FB00087C2E9 = {
 			isa = PBXGroup;
 			children = (
@@ -164,18 +185,13 @@
 		218746121F3453C40087C2E9 /* SimpleDB */ = {
 			isa = PBXGroup;
 			children = (
-				2187461F1F3453C40087C2E9 /* FMWrapper */,
-				2187460E1F3453650087C2E9 /* KWVerson */,
-				218746131F3453C40087C2E9 /* DataTypeEncoding.h */,
-				218746141F3453C40087C2E9 /* DataTypeEncoding.m */,
-				218746171F3453C40087C2E9 /* KWSBaseInfo.h */,
-				218746181F3453C40087C2E9 /* KWSBaseInfo.m */,
-				218746191F3453C40087C2E9 /* KWSBaseModel.h */,
-				2187461A1F3453C40087C2E9 /* KWSBaseModel.m */,
 				2187461B1F3453C40087C2E9 /* KWSimpleDBManager.h */,
 				2187461C1F3453C40087C2E9 /* KWSimpleDBManager.mm */,
 				2187461D1F3453C40087C2E9 /* KWSimpleDBManagerPrivate.h */,
-				2187461E1F3453C40087C2E9 /* nonstdlib.h */,
+				2187461F1F3453C40087C2E9 /* FMWrapper */,
+				21371C7C1FA71EBB000023FF /* Info */,
+				2187460E1F3453650087C2E9 /* KWVerson */,
+				21371C791FA71DDC000023FF /* Util */,
 			);
 			path = SimpleDB;
 			sourceTree = "<group>";
