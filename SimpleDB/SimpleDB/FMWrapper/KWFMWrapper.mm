@@ -114,7 +114,6 @@
 
 - (KWFMWrapper *(^)(NSString *colum))selectOne {
     return ^id(NSString *colum){
-        NSAssert(colum.length>0, @"");
         self.sqlWrapper.sqlType = KWSqlType_SelectOne;
         self.sqlWrapper.colums = @[colum];
         
@@ -124,7 +123,6 @@
 
 - (KWFMWrapper *(^)(NSArray *))selectRow {
     return ^id(NSArray *colums){
-        NSAssert(colums.count>0, @"");
         self.sqlWrapper.sqlType = KWSqlType_SelectRow;
         self.sqlWrapper.colums = colums; 
         return self;
@@ -175,7 +173,7 @@
 
 - (KWFMWrapper *(^)(NSArray *colums))addColum {
     return ^id(NSArray *colums) {
-        NSAssert(colums.count>0, @"");
+        NSAssert(colums.count==1, @"");//fmdb 默认不支持执行多个语句
         
         self.sqlWrapper.sqlType = KWSqlType_AddColum;
         self.sqlWrapper.colums = colums;

@@ -35,7 +35,12 @@
     self.tableName = @"tb_feeds";
     self.propertyClazz = [KWFeedsInfo class];
     self.tableIdentifier = @"kFeedsTableVersion";
-    self.currentVersion = 1;
+    self.currentVersion = 2;
+}
+
+- (BOOL)upgradeFrom1To2 {
+    self.dbWrapper.table(self.tableName).addColum(@[@"iconName1"]).commit();
+    return self.dbWrapper.table(self.tableName).addColum(@[@"iconColor1"]).commit();
 }
 
 @end

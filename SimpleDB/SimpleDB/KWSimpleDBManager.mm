@@ -108,6 +108,16 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
     return NO;
 }
 
+- (BOOL)upgradeFrom5To6 {
+    NSAssert(NO, @"");
+    return NO;
+}
+
+- (BOOL)upgradeFrom4To5 {
+    NSAssert(NO, @"");
+    return NO;
+}
+
 - (void)commonInit {
     
     NSAssert(self.tableName, @"need Configure");
@@ -246,7 +256,7 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
 
 - (KWSBaseModel *)modelForDic:(NSDictionary *)dic {
     
-    KWSqlResult *res = self.dbWrapper.table(self.tableName).selectRow(nil).where(dic).commit();
+    KWSqlResult *res = self.dbWrapper.table(self.tableName).selectRow([self.propertyClazz fmPropertyArray]).where(dic).commit();
     if([res.rows firstObject]) {
         KWSBaseModel *model = [self parseFMResult:[res.rows firstObject] clazz:self.propertyClazz];
         return model;

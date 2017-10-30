@@ -41,6 +41,8 @@
              @"userAvatar",
              @"data",
              @"isLiked",
+//             @"iconName",
+//             @"iconColor",
              ];
 }
 
@@ -71,6 +73,10 @@
 
 #pragma mark - Setter & Getter 
 - (void)setData:(NSArray *)data {
+    if(![data isKindOfClass:[NSArray class]]) {
+        return;
+    }
+    
     NSMutableArray *tempData = [NSMutableArray arrayWithCapacity:data.count];
     [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[NSDictionary class]]) {

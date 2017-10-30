@@ -19,7 +19,7 @@
 - (KWFMWrapper *(^)(Class clazz, NSArray *))create;
 - (KWFMWrapper *(^)(NSDictionary *colAndType))createT;
 
-- (KWFMWrapper *(^)())total;
+- (KWFMWrapper *(^)(void))total;
 - (KWFMWrapper *(^)(NSString *colum))columTotal;
 
 - (KWFMWrapper *(^)(NSString *colum))selectInt;
@@ -39,7 +39,7 @@
 - (KWFMWrapper *(^)(NSInteger limit, NSInteger offset))limit;
 
 
-- (KWFMWrapper *(^)())remove;
+- (KWFMWrapper *(^)(void))remove;
 
 - (KWFMWrapper *(^)(NSArray *pkeys))primary;
 - (KWFMWrapper *(^)(NSDictionary *conditions))where;
@@ -48,7 +48,7 @@
 - (KWFMWrapper *(^)(NSString *sortStr))sortStr;
 
 
-- (KWSqlResult *(^)())commit;
+- (KWSqlResult *(^)(void))commit;
 
 - (KWSqlResult *(^)(NSString *sql))commitSql;
 

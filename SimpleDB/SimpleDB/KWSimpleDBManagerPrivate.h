@@ -57,6 +57,8 @@
 - (BOOL)upgradeFrom1To2;
 - (BOOL)upgradeFrom2To3;
 - (BOOL)upgradeFrom3To4;
+- (BOOL)upgradeFrom5To6;
+- (BOOL)upgradeFrom4To5;
 
 - (void)commonInit;
 - (BOOL)createTables;

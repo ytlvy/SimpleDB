@@ -189,7 +189,14 @@
                 [valueStr appendString:@"?,"];
             }
             
-            [self.paramArray addObject:row[allKeys[j]]];
+            NSString *key = allKeys[j];
+            id obj = [row objectForKey:key];
+            if(obj) {
+                [self.paramArray addObject:obj];
+            }
+            else {
+                NSAssert(NO, @"");
+            }
         }
         
         if(i == rowNum-1) {

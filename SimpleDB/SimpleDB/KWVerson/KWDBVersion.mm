@@ -67,6 +67,7 @@
     NSAssert(ver > 0, @"");
     KWSqlResult *result = self.dbWrapper.table(_versionTable).selectInt(@"value").where(@{@"identifier":identifier}).commit();
     if(!result.success) {
+        NSAssert(NO, @"");
         return;
     }
     

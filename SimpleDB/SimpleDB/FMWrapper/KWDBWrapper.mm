@@ -89,7 +89,13 @@
         
         [resultSet close];
     }];
-    return [KWSqlResult resultWithArray:@[row]];	
+    
+    if(row) {
+        return [KWSqlResult resultWithArray:@[row]];
+    }
+    else {
+        return [KWSqlResult resultWithArray:nil];
+    }
 }
 
 - (KWSqlResult *)selectArray:(NSString *)sql  params:(NSDictionary *)params{

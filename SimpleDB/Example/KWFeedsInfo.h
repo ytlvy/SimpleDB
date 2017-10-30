@@ -34,6 +34,14 @@
 @property(nonatomic, assign) BOOL fetchedRelated;
 @property(nonatomic, assign) BOOL fetchedsong;
 
+@property (nonatomic, copy)   NSString *iconName;
+@property (nonatomic, strong) NSString *iconColor;
+
+@property (nonatomic, copy)   NSString *iconName1;
+@property (nonatomic, strong) NSString *iconColor1;
+
+@property (nonatomic, copy)   NSString *iconName2;
+@property (nonatomic, strong) NSString *iconColor2;
 
 - (NSString *)convertDurationToTime;
 

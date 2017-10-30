@@ -49,7 +49,7 @@
         }
         
         if (value == nil || value == [NSNull null]) {
-            // nothing todo
+            [dictionary setObject:[NSNull null] forKey:column];
         }
         else if ([value isKindOfClass:[NSNumber class]]
                  || [value isKindOfClass:[NSString class]]
@@ -131,7 +131,44 @@
     for (i = 0; i < outCount; i++) {
         objc_property_t property = properties[i];
         NSString *propertyName = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
-        [m_dic setValue:[self valueForKey:propertyName] forKey:propertyName];
+        
+        char const *attributes = property_getAttributes(property);
+        NSString *attributesString = [NSString stringWithCString:attributes encoding:[NSString defaultCStringEncoding]];
+        if([attributesString localizedCaseInsensitiveContainsString:@"R,"]) {
+            continue;
+        }
+        
+        if([[self valueForKey:propertyName] isKindOfClass:[NSArray class]]) {
+            NSMutableArray *n_arr = [NSMutableArray new];
+            NSArray *data = (NSArray *)[self valueForKey:propertyName];
+            [data enumerateObjectsUsingBlock:^(KWSBaseModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if([obj isKindOfClass:[KWSBaseModel class]]) {
+                    [n_arr addObject: [obj toDictionary]];
+                }
+            }];
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:n_arr options:NSJSONWritingPrettyPrinted error:nil];
+            NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            if(jsonData) {
+                [m_dic setObject:jsonStr forKey:propertyName];
+            }
+            else {
+                NSAssert(NO, @"");
+            }
+        }
+        else if([[self valueForKey:propertyName] isKindOfClass:[KWSBaseModel class]]) {
+            KWSBaseModel *model = (KWSBaseModel *)[self valueForKey:propertyName];
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:model options:NSJSONWritingPrettyPrinted error:nil];
+            NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            if(jsonData) {
+                [m_dic setObject:jsonStr forKey:propertyName];
+            }
+            else {
+                NSAssert(NO, @"");
+            }
+        }
+        else {
+            [m_dic setValue:[self valueForKey:propertyName] forKey:propertyName];
+        }
     }
     return m_dic;
 }
