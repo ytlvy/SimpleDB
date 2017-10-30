@@ -131,20 +131,20 @@
 
 - (void)compositeSelectRow {
     if([self.colums count] > 0) {
-        self.sql = [NSString stringWithFormat:@"SELECT %@ FROM %@", [self.colums componentsJoinedByString:@", "], self.table];
+        self.sql = [NSString stringWithFormat:@"SELECT rowid, %@ FROM %@", [self.colums componentsJoinedByString:@", "], self.table];
     }
     else {
-       self.sql = [NSString stringWithFormat:@"SELECT * FROM %@", self.table]; 
+       self.sql = [NSString stringWithFormat:@"SELECT rowid, * FROM %@", self.table];
     }
     [self appendWhere]; 
 }
 
 - (void)compositeSelectArray {
     if([self.colums count] > 0) {
-        self.sql = [NSString stringWithFormat:@"SELECT %@ FROM %@", [self.colums componentsJoinedByString:@", "], self.table];
+        self.sql = [NSString stringWithFormat:@"SELECT rowid, %@ FROM %@", [self.colums componentsJoinedByString:@", "], self.table];
     }
     else {
-        self.sql = [NSString stringWithFormat:@"SELECT * FROM %@", self.table]; 
+        self.sql = [NSString stringWithFormat:@"SELECT rowid, * FROM %@", self.table];
     }
     [self appendWhere]; 
     [self appendSort];

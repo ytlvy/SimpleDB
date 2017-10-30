@@ -8,6 +8,10 @@
 
 #import "KWSBaseModel.h"
 
+@interface KWSBaseModel()
+@property (nonatomic, assign) NSInteger p_rowid;
+@end
+
 @implementation KWSBaseModel
 
 - (instancetype)initWithDict:(NSDictionary *)dict {

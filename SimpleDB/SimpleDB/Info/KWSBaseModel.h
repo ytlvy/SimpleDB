@@ -18,6 +18,9 @@
 
 @interface KWSBaseModel : KWSBaseInfo<KWSBaseModelDelegate>
 
+@property (nonatomic, assign, readonly) NSInteger p_rowid;
+
+
 /**
  *  属性和数据库字段对应关系
  *

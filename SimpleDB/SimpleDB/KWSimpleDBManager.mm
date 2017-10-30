@@ -498,6 +498,10 @@ static NSString * const TYPE_ARRAY_NAME   = @"array";
         return nil;
     }
     
+    if(fmResult[@"rowid"]) {
+        [instanceObj setValue:fmResult[@"rowid"] forKey:@"p_rowid"];
+    }
+    
     /**
      *  根据key遍历dic
      */
